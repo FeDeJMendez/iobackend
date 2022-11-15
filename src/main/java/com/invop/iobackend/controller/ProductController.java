@@ -59,4 +59,11 @@ public class ProductController {
         productService.deleteByBarcode(barcode);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
+    ///// Recategorize All Products in ABC Model/////
+    @PostMapping(value = "/recategorize", produces = "application/json")
+    public ResponseEntity recategorizeAllProducts() {
+        productService.recategorize();
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 }

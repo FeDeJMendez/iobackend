@@ -1,5 +1,6 @@
 package com.invop.iobackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.invop.iobackend.utils.URIInterface;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 import net.bytebuddy.implementation.bind.annotation.Default;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -27,7 +29,15 @@ public class Product implements URIInterface {
     @Column
     private Double price;
 
+    @Column
+    private Integer stock;
+
     @Column(name = "class_product")
     @Enumerated(EnumType.STRING)
     private ClassProduct classProduct;
+
+
+//    @JsonIgnore
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+//    private List<Detail> details;
 }
