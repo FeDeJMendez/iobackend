@@ -26,10 +26,13 @@ public class Product implements URIInterface {
     @Column(unique = true)
     private String barcode;
 
+    @Column(unique = true)
+    private String description;
+
     @Column
     private Double price;
 
-    @Column
+    @Column 
     private Integer stock;
 
     @Column(name = "class_product")

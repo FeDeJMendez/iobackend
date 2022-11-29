@@ -60,6 +60,15 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+    /// Edit Stock By Barcode ///
+    @GetMapping(value = "/{barcode}/{stock}", produces = "application/json")
+    public ResponseEntity editStockProduct(@PathVariable(value = "barcode") String barcode,
+                                           @PathVariable(value = "stock") Integer stock)
+            throws ProductNotExistsException {
+        Product editedProduct = productService.editStock(barcode, stock);
+        return ResponseEntity.ok().build();
+    }
+
     ///// Recategorize All Products in ABC Model/////
     @PostMapping(value = "/recategorize", produces = "application/json")
     public ResponseEntity recategorizeAllProducts() {

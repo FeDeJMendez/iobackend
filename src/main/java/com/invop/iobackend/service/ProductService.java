@@ -68,4 +68,12 @@ public class ProductService {
             }
         }
     }
+
+    public Product editStock(String barcode, Integer stock)
+            throws ProductNotExistsException {
+        Product product = this.getByBarcode(barcode);
+        product.setStock(stock);
+        productRepository.save(product);
+        return product;
+    }
 }
