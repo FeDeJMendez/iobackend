@@ -69,8 +69,17 @@ public class ProductController {
         return ResponseEntity.ok().build();
     }
 
+    /// Edit Class By Barcode ///
+    @GetMapping(value = "/editclass/{barcode}/{classProduct}", produces = "application/json")
+    public ResponseEntity editStockProduct(@PathVariable(value = "barcode") String barcode,
+                                           @PathVariable(value = "classProduct") String classProduct)
+            throws ProductNotExistsException {
+        Product editedProduct = productService.editClass(barcode, classProduct);
+        return ResponseEntity.ok().build();
+    }
+
     ///// Recategorize All Products in ABC Model/////
-    @PostMapping(value = "/recategorize", produces = "application/json")
+    @GetMapping(value = "/recategorize", produces = "application/json")
     public ResponseEntity recategorizeAllProducts() {
         productService.recategorize();
         return ResponseEntity.status(HttpStatus.OK).build();

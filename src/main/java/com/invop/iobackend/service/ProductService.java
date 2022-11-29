@@ -76,4 +76,13 @@ public class ProductService {
         productRepository.save(product);
         return product;
     }
+
+    public Product editClass(String barcode, String classProduct)
+            throws ProductNotExistsException {
+        Product product = this.getByBarcode(barcode);
+        ClassProduct classP = ClassProduct.valueOf(classProduct);
+        product.setClassProduct(classP);
+        productRepository.save(product);
+        return product;
+    }
 }
